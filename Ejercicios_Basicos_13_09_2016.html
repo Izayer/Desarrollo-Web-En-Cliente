@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<body>
+
+<script type="text/javascript">
+    /* 
+    1.	Escribe un programa que pida el nombre del usuario con un prompt y escriba un texto que diga “Hola nombreUsuario”
+    var izena = prompt("Sar ezazu zure izena");
+    document.write("Kaixo " . izena);
+    */
+    
+    /*
+    2.	Escribe un programa que pida un número, pida otro número y escriba el resultado de sumar estos dos números.
+    
+    
+    var numero1 = parseInt( prompt("Lehendabiziko numeroa"));
+    var numero2 = parseInt(prompt("Bigarren numeroa"));
+    var emaitza = (numero1 + numero2);
+    
+    document.write("Emaitza: " + emaitza.toString());
+    */
+    
+    /*
+    3.	Escribe un programa que pida dos números y escriba en la pantalla cual es el mayor.
+    
+    var numero1 = parseInt( prompt("Lehendabiziko zenbakia"));
+    var numero2 = parseInt(prompt("Bigarren zenbakia"));
+    if (numero1 > numero2){
+        document.write("Lehendabiziko zenbakia Handiagoa da: " + numero1.toString());
+    }
+    else{
+        document.write("Bigarren zenbakia Handiagoa da: " + numero2.toString());
+    }
+    */
+    
+    /*
+    4.  Escribe un programa que pida 3 números y escriba en la pantalla el mayor de los tres.
+    
+    var numero1 = parseInt( prompt("Lehendabiziko zenbakia"));
+    var numero2 = parseInt(prompt("Bigarren zenbakia"));
+    var numero3 = parseInt( prompt("Hirugarren zenbakia"));
+    
+    if (numero1 > numero2 && numero1 > numero3){
+        document.write("Lehendabiziko zenbakia Handiagoa da: " + numero1.toString());
+    }
+    else if (numero2 > numero1 && numero2 > numero3){
+        document.write("Bigarren zenbakia Handiagoa da: " + numero2.toString());
+    }
+    else{
+        document.write("Hirugarren zenbakia Handiagoa da: " + numero3.toString());
+    }
+    */
+    
+    /*
+    5.	Escribe un programa que pida un número y diga si es divisible por 2
+    
+    var numero1 = parseInt( prompt("Sar ezazu zenbakia"));
+    
+    if (numero1 % 2 == 0){
+        document.write(numero1 + " Zenbakia zatigarria da birekiko");
+    }
+    else{
+        document.write(numero1 + " Ez da birekiko zatigarria");
+    }
+    */
+    
+    /*
+    6.	Escribe un programa que pida una frase y escriba las vocales que aparecen
+    
+    var esaldia = prompt("Idatzi esaldi bat");
+    var bokalak;
+    var a = 0;
+    var e = 0;
+    var i = 0;
+    var o = 0;
+    var u = 0;
+    var bokalesaldia = "";
+    
+    for (var x = 0; x< esaldia.length; x++) {
+         var karakterea = esaldia.charAt(x);
+         if( karakterea == "a" || karakterea == "A") {
+            a++;
+            bokalesaldia += karakterea;
+          }  else if ( karakterea == "e" || karakterea == "E") {
+            e++;
+            bokalesaldia += karakterea;
+          }  else if ( karakterea == "i" || karakterea == "I") {
+            i++;
+            bokalesaldia += karakterea;
+          }  else if ( karakterea == "o" || karakterea == "O") {
+            o++;
+            bokalesaldia += karakterea;
+          }  else if ( karakterea == "u" || karakterea == "U") {
+            u++;
+            bokalesaldia += karakterea;
+          }
+    }
+    
+    document.write("a bokala: " + a + " aldiz agertzen da <br/>");
+    document.write("e bokala: " + e + " aldiz agertzen da <br/>");
+    document.write("i bokala: " + i + " aldiz agertzen da <br/>");
+    document.write("o bokala: " + o + " aldiz agertzen da <br/>");
+    document.write("u bokala: " + u + " aldiz agertzen da <br/>");
+    document.write(" Bokalen segida: " + bokalesaldia);
+    */
+    
+    /*
+    7.	Escribe un programa que pida un número y nos diga si es divisible por 2, 3, 5 o 7 (sólo hay que comprobar si lo es por uno de los cuatro).
+    
+    var zenbakia = parseInt( prompt("Sar ezazu zenbakia"));
+    
+    if (zenbakia % 2 == 0){
+        document.write(zenbakia + " Zenbakia zatigarria da birekiko (2)");
+    }
+    else if (zenbakia % 3 == 0){
+        document.write(zenbakia + " Zenbakia zatigarria da hirurekiko (3)");
+    }else if (zenbakia % 5 == 0){
+        document.write(zenbakia + " Zenbakia zatigarria da bostekiko (5)");
+    }else{
+        document.write(zenbakia + " Zenbakia zatigarria da zazpirekiko (7)");
+    }
+    */
+    
+    /*
+    8.	Añadir al ejercicio anterior que nos diga por cual de los cuatro es divisible (hay que decir todos por los que es divisible)
+    
+    var zenbakia = parseInt( prompt("Sar ezazu zenbakia"));
+    for (var x = 0; x< 4; x++) {
+    if (zenbakia % 2 == 0 && x < 1){
+        document.write(zenbakia + " Zenbakia zatigarria da birekiko (2) <br/>");
+    }
+    else if (zenbakia % 3 == 0 && x < 2){
+        document.write(zenbakia + " Zenbakia zatigarria da hirurekiko (3) <br/>");
+    }else if (zenbakia % 5 == 0 && x < 3){
+        document.write(zenbakia + " Zenbakia zatigarria da bostekiko (5) <br/>");
+    }else if (zenbakia % 7 == 0) {
+        document.write(zenbakia + " Zenbakia zatigarria da zazpirekiko (7) <br/>");
+        break;
+    }
+    }
+    */
+    
+    /*
+    9.	Escribir un programa que escriba en pantalla los divisores de un número dado
+    */
+    var zenbakia = parseInt( prompt("Sar ezazu zenbakia"));
+    var hasiera_zenbakia = zenbakia;
+    var zatitzaileak = "";
+    for ( zenbakia; zenbakia > 1; zenbakia--){
+        if ( hasiera_zenbakia % zenbakia == 0){
+            zatitzaileak += zenbakia + ", ";
+        }
+    }
+    zatitzaileak += 1 + ". "
+    document.write(hasiera_zenbakia + " Zenbakiaren zatitzaileak honako hauek dira: " + zatitzaileak);
+    
+</script>
+
+</body>
+</html>
