@@ -143,7 +143,7 @@
     
     /*
     9.	Escribir un programa que escriba en pantalla los divisores de un número dado
-    */
+    
     var zenbakia = parseInt( prompt("Sar ezazu zenbakia"));
     var hasiera_zenbakia = zenbakia;
     var zatitzaileak = "";
@@ -154,6 +154,108 @@
     }
     zatitzaileak += 1 + ". "
     document.write(hasiera_zenbakia + " Zenbakiaren zatitzaileak honako hauek dira: " + zatitzaileak);
+    */
+    /*
+    //10.	Escribir un programa que escriba en pantalla los divisores comunes de dos números dados
+    
+    //Lehendabiziko soluzioa ez dijoa
+    // Lehendaiziko zenbakia eskatu eta honen zatitzaileak lortu.
+    var zenbakia = parseInt( prompt("Sar ezazu lehendabiziko zenbakia"));
+    var hasiera_zenbakia = zenbakia;
+    var zatitzaileak = [];
+    
+    for ( zenbakia; zenbakia > 1; zenbakia--){
+        if ( hasiera_zenbakia % zenbakia == 0){
+            zatitzaileak.push(zenbakia);
+            
+        }
+    }
+   
+    
+    // Bigarren zenbakia esktau eta honen zatitzaileak lortu.
+    var zenbakia2 = parseInt( prompt("Sar ezazu bigarren zenbakia"));
+    var hasiera_zenbakia2 = zenbakia2;
+    var zatitzaileak2 = [];
+    for ( zenbakia2; zenbakia2 > 1; zenbakia2--){
+        if ( hasiera_zenbakia2 % zenbakia2 == 0){
+            zatitzaileak2.push(zenbakia2);
+        }
+    }
+   
+    var j = 0;
+    var k = 0;
+    var komunak = [];
+    var konp1;
+    var konp2;
+    
+    //lehendabiziko zatizaileetako bat hartu eta bigarrenarekin konparatu eta horrela bada komunetan sartu.
+    for ( j; j < zatitzaileak.length; j++){
+        konp1 = zatitzaileak[j];
+        k=0;
+        for (k; k < zatitzaileak2.length; k++){
+            konp2 = zatitzaileak2[k];
+            
+            //Ez du ondo egiten
+            if ( konp1 == konp2){
+                komunak.push(konp2);
+                
+            }
+            
+        }
+        
+    }
+    komunak.push(1);
+    komunak.sort();
+    document.write(hasiera_zenbakia + " eta " + hasiera_zenbakia2 + " zenbakien zatitzaile komunak hauexek dira: " + komunak);
+    */
+    /*
+    var n1 = prompt("Escribe un número");
+    var n2 = prompt("Escribe otro número");
+    var menor;
+    var i;
+    if (n1 < n2) {
+    menor = n1;
+    } else {
+    menor = n2;
+    }
+    for (i=2; i < menor / 2; i++) {
+    if (n1 % i === 0 && n2 % i === 0) {
+    document.write(i,", ");
+    }
+    }
+    */
+    /*
+    Escribir un programa que nos diga si un número dado es primo (no es divisible por ninguno otro número que no sea él mismo o la unidad)
+    
+    //Lehendabiziko soluzioa
+    
+    var n1 = prompt("Escribe un número");
+    var i;
+    var primer = true;
+    for (i=2; i < n1 / 2; i++) {
+    if (n1 % i === 0) {
+    primer = false;
+    }
+    }
+    if (primer) {
+    document.write("El número es primo");
+    } else {
+    document.write("El número no es primo");
+    }
+    
+    //Bigarren soluzioa
+    var n1 = prompt("Escribe un número");
+    var i = 2;
+    while (n1 % i !== 0 && i < n1 / 2 ) {
+    i++;
+    }
+    if (n1 % i !== 0) {
+    document.write("El número es primo");
+    } else {
+    document.write("El número no es primo");
+    }
+    */
+    
     
 </script>
 
