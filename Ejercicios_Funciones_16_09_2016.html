@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<title>Ejercicios Funciones</title>
+<body>
+
+<script type="text/javascript">
+    
+    /*
+
+    1.	Escribe un programa que pida una frase al usuario y mediante una función calcule el numero de letras que se han introducido.
+        También deberá analizar cuantas letras hay en mayúscula y cuantas letras hay en minúscula.
+    */
+    
+    function vocalKal(){
+    var esaldia = prompt("Idatz ezazu esaldi bat, programak zenbat letra dituen erantzungo dizu");
+    
+    
+    var re = esaldia.replace(/[^a-z]/gi,'');
+    var reMinus = re.replace(/[^a-z]/g,'');
+    var reMayus = re.replace(/[^A-Z]/g,'');
+    
+    var reKopurua = re.length;
+    var reMinus = reMinus.length;
+    var reMayus = reMayus.length;
+    
+    document.write("Letra kopuru osoa: " + reKopurua + " Mayus: " + reMayus + " Minus: " + reMinus);
+    }
+    
+    //vocalKal();
+    
+    //2.Escribir el código de una función a la que se pasa como parámetro un número entero y devuelve como resultado una cadena de texto que indica si el número es par o impar. 
+            //Mostrar por pantalla el resultado devuelto por la función.
+            function numPrimo(num){
+                if(num%2==0){
+                    return "El numero es primo";
+                }else{
+                    return "El numero no es primo";
+                }
+            }
+            
+            //3.Utilizando una función escribe un programa que  calcule  la letra del DNI, es un proceso matemático sencillo que se basa en obtener el resto de la división entera 
+            //del número de DNI y el número 23. A partir del resto de la división, se obtiene la letra seleccionándola dentro de un array de letras.El array de letras es:
+            //Comprobar que el numero introducido esta entre 0 y 99999999.
+            function letraDni(){
+                var numDni = prompt("Escribe el numero de tu DNI y te dire su letra");
+                var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E', 'T'];
+                
+                while(numDni>99999999||numDni<0){
+                    alert("Numero DNI invalido. 8 digitos, con valor de entre 0 y 99999999");
+                    numDni = prompt("Escribe el numero de tu DNI y te dire su letra");
+                }
+                
+                var letraDni = numDni%23;
+                
+                document.write("Numero de DNI introducido: "+numDni+"<br/>");
+                document.write("La letra de tu DNI es: "+letras[letraDni]+"<br/>");
+                document.write(numDni+"-"+letras[letraDni]);
+            }
+            //4.Utilizando dos arrays, escribe un programa que pida una frase al usuario, el programa nos tiene que decir cuántas vocales hay en la frase introducida.
+            function contVocales(){
+                var esaldia = prompt("Sar ezazu esaldia eta zenbat bokal dauden esango zaizu");
+                var esaldia = esaldia.toLowerCase();
+                var re = esaldia.replace(/[^a-z]/gi,'');
+                var esalArray = re.split("");
+                
+                var vocales=["a","e","i","o","u"]
+                var vocalesCont = 0;
+                for ( var x = 0; x < re.length; x++){
+                    for ( var i = 0; i < vocales.length; i++){
+                        if ( re[x] == vocales[i]){
+                            vocalesCont++;
+                        }
+                    }
+                }
+                document.write("Guztira " + vocalesCont + " Bokal idatzi duzu/dituzu esaldian");
+                
+                
+                
+            }
+            
+            //5.Escribe un programa que pida una frase al usuario y nos diga si es o no es un palíndromo.   La ruta nos aporto otro paso natural
+            function palindromo(){
+                var frase = prompt("Escribe una frase para saber si es o no un palindromo (Se lee igual de izquierda a derecha, que de derecha a izquierda)");
+                //var withoutSpace = frase.replace(/[^a-zA-Z ] /g,"");
+                
+                frase = frase.replace(/\s/g, '');
+                frase = frase.toLowerCase();
+                var palindromo = "";
+                document.write(frase+"<br/>");
+                for(var i=frase.length;i>=0;i--){
+                    palindromo=palindromo.concat(frase.charAt(i));
+                }
+                if(frase===palindromo){
+                    document.write("Palindromoa dek");
+                }else{
+                    document.write("Ez dek palindromoa");
+                }
+            }
+            
+            //analizarFrase();
+            
+            //var num = prompt("Escribe un numero y te dire si es primo o no");
+            //document.write(numPrimo(num));
+            
+            //letraDni();
+            
+            
+            
+            //palindromo();
+    contVocales();
+</script>
+
+</body>
+</html>
