@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> DOM basico y atributos XHTML</title>
+
+<script type="text/javascript">
+function anade() {
+    /*
+    3.	Completar el cÃƒÂ³digo JavaScript proporcionado para que se aÃƒÂ±adan nuevos elementos a la lista
+    cada vez que se pulsa sobre el botÃƒÂ³n. Al igual que sucede en el ejercicio anterior, la acciÃƒÂ³n de pinchar
+    sobre un botÃƒÂ³n forma parte de los "Eventos" de JavaScript que se ven en el siguiente capÃƒÂ­tulo. 
+    En este ejercicio, sÃƒÂ³lo se debe saber que al pinchar sobre el botÃƒÂ³n, se ejecuta la funciÃƒÂ³n llamada anade()
+    */
+    var lista = document.getElementById("lista");
+    var balorea = document.createTextNode(document.getElementById("listaGehitu").value);
+    var li = document.createElement("li");
+    li.appendChild(balorea);
+    lista.appendChild(li);
+    
+
+}
+</script>
+</head>
+
+<body>
+<ul id="lista">
+	<li>Lorem ipsum dolor sit amet</li>
+	<li>Consectetuer adipiscing elit</li>
+	<li>Sed mattis enim vitae orci</li>
+	<li>Phasellus libero</li>
+	<li>Maecenas nisl arcu</li>
+</ul>
+<input type ="text" value="" id = "listaGehitu" name="listaGehitu" id="listaGehitu"/ >
+<input type="button" value="Anadir elemento" onclick="anade();"/>
+</body>
+</html>

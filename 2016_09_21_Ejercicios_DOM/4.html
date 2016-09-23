@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <title>Ver todos los párrafos</title> 
+<style type="text/css">
+   #cuadro { width: 400px; height: 200px; border: 1px black solid; float: right; }
+   p { font-size: 1em; font-family: arial; }
+  /* 
+   4.	Completar el código JavaScript proporcionado para que cuando hagamos click
+ en el cuarto y quinto parrafo haga lo que se explica en el parrafo.
+ */
+</style>
+<script type="text/javascript">
+       function acceder(){
+            
+            var parrafos = document.getElementsByTagName("p");
+            var cuadro = document.getElementById("cuadro");
+            var luzera = parrafos.length;
+            var cont = 0;
+            for ( var i = 0; i < luzera; i++){
+                var par = document.createElement("p");
+                var contenido = document.createTextNode(parrafos[i + cont].innerHTML);
+                cont++;
+                
+                cuadro.appendChild(par);
+                par.appendChild(contenido);
+            }
+            
+        }
+        function borrar(){
+            var cuadro = document.getElementById("cuadro");
+            
+            //cuadro.parentNode.removeChild(cuadro);
+            cuadro.remove();
+        }
+</script>
+</head>
+<body>
+    
+   <h1>Acceso a los párrafos</h1>
+   <div id="cuadro"></div>
+     <p>Este es el primer párrafo de esta página</p>
+     <p>Este es el segundo párrafo</p>
+     <p>Y este el tercero</p>
+     <p onclick="acceder()">Pulsa en este cuarto párrafo para volver 
+         a verlos todos en el recuadro de la derecha.</p>
+     <p onclick="borrar()">Y pulsa en el quinto para borrar el 
+         recuadro de la derecha.</p> 
+    
+    
+    
+</body>
+</html>
