@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOM 3</title>
+<script type="text/javascript">
+/*
+3.	Crear una página que tendrá un botón con el que abriremos una nueva página de 200x200 pixeles.
+En esta página tendremos unos  botones que nos permitirán hacer las siguientes cosas.
+
+•	Mover la ventana hacia arriba (10px)
+•	Mover la ventana hacia la izquierda (10px)
+•	Mover la ventana hacia la derecha (10px)
+•	Mover la ventana hacia abajo (10px)
+•	Agrandar la ventana al doble de su tamaño. Siempre que no se salga de la pantalla
+•	Reducir la ventana a la mitad de su tamaño. Siempre que no se menor que 100x100
+*/
+
+window.resizeTo(200,200);
+
+function ezkerra(){
+    window.moveBy(-10,0);
+}
+function eskubi(){
+    window.moveBy(10,0);
+}
+function gora(){
+    window.moveBy(0,-10);
+}
+function behera(){
+    window.moveBy(0,10);
+}
+function bikoitza(){
+    var orainX = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var orainY = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    
+    var osoaY = screen.availHeight;
+    var osoaX = screen.availWidth;
+    
+    
+    
+        window.moveTo(0,0);
+        window.resizeBy(orainX*2,orainY*2);
+    
+    
+}
+function erdia(){
+    var orainX = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var orainY = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    
+    var osoaY = screen.availHeight;
+    var osoaX = screen.availWidth;
+    
+    
+    if ((orainX > 100) && (orainY > 100)){
+        window.moveTo(0,0);
+        window.resizeBy(-orainX/2,-orainY/2);
+    
+    }
+}
+</script>
+</head>
+
+<body>
+
+<button onclick="ezkerra()">◄</button>
+<button onclick="eskubi()">►</button>
+<button onclick="gora()">▲</button>
+<button onclick="behera()">▼</button>
+<button onclick="bikoitza()">X2</button>
+<button onclick="erdia()">/2</button>
+
+</body>
+
+</html>
