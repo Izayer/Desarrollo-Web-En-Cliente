@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOM 2</title>
+<script type="text/javascript">
+/*    2.	Crear una página en la que solo aparezca un botón. Al pulsar este botón nos aparecerá cierta información:
+
+•	La URL de la página en la que estamos.
+•	El navegador que estamos utilizando.
+•	El titulo de la página.
+•	El numero de formularios que hay en la página (si es que hay alguno).
+•	Tamaño de la ventana actualmente.
+•	Un mensaje de que dejemos de navegar si comprueba que el historial de visitas es largo.
+*/
+function prozedura(){
+    var textua = "";
+    textua += "URL-a: ";
+    textua += document.URL;
+    var par = document.createElement('p');
+    var txt = document.createTextNode(textua);
+    par.appendChild(txt);
+    document.body.appendChild(par);
+    //document.write(textua += document.URL);
+    //document.write("<br/>");
+    //2
+    var textua2;
+    //document.write(textua1 = " Nabigatzailearen izena: " + navigator.appName + " " + navigator.appVersion);
+    textua2 = " Nabigatzailearen izena: " + navigator.appName + " " + navigator.appVersion;
+    var par2 = document.createElement('p');
+    var txt2 = document.createTextNode(textua2);
+    par2.appendChild(txt2);
+    document.body.appendChild(par2);
+    
+    //par.appendChild(txt);
+    
+    //document.body.appendChild(par);
+    //3
+    var textua3;
+    textua3 = " Dokumentuaren tituloa: " + document.title;
+    var par3 = document.createElement('p');
+    var txt3 = document.createTextNode(textua3);
+    par3.appendChild(txt3);
+    document.body.appendChild(par3);
+    
+    //4
+    var textua4;
+    textua4 = "Imprimaki kantitatea: " + document.forms.length;
+    var par4 = document.createElement('p');
+    var txt4 = document.createTextNode(textua4);
+    par4.appendChild(txt4);
+    document.body.appendChild(par4);
+    
+    //5
+    var textua5;
+    textua5 = "Lehioaren taimaina osoa: " + "Height: " + screen.availHeight + " Width: " + screen.availWidth +
+    " Orain duen tamaina: Height" + window.innerHeight + " Width: " + window.innerWidth;
+    var par5 = document.createElement('p');
+    var txt5 = document.createTextNode(textua5);
+    par5.appendChild(txt5);
+    document.body.appendChild(par5);
+    
+    //6
+    
+    if (window.history.length > 1){
+        alert("Nabigatzeaz utzi gehiegi ibili zara!");
+    }
+    
+    //document.write("<br/>");
+    
+    //var tituloa2 = document.getElementsByTagName("title");
+    
+    //var tituloa = "Dokumentuaren tituloa: " + document.title + tituloa2.innerHtml ;
+    
+    //document.write(tituloa);
+    
+    
+}
+
+</script>
+</head>
+
+<body>
+
+<button id="botoia" name="botoia" onclick="prozedura()">Sakatu nazazu</button>
+
+<br/>
+<br/>
+<form>
+    <input type="text" name=""/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+
+</html>

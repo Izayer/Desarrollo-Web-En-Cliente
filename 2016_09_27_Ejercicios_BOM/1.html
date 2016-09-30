@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOM 1</title>
+
+<script type="text/javascript" >
+    /*
+    1.	Crea una página en el que aparecerá un botón dentro de un <div> que tendrá
+    un color de fondo rojo. Al pulsar sobre el botón añadiremos un nuevo <div>  con
+    un color de fondo aleatorio y el texto “SOY UN NUEVO <DIV>”.
+    */
+   
+function dame(){ 
+            var hexadecimal = new Array("0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"); 
+            var color_aleatorio = "#"; 
+            for (var i=0;i<6;i++){ 
+                var ale = Math.floor((Math.random() * 15)); 
+                color_aleatorio += hexadecimal[ale]; 
+                } 
+            return color_aleatorio; 
+}
+function divBerria(){
+        var divB = document.createElement('div');
+        var content = document.createTextNode("Soy un nuevo DIV");
+        divB.appendChild(content);
+        document.body.appendChild(divB);
+        divB.style.background = dame();
+        
+       
+        
+    }
+    
+</script>
+</head>
+
+<body>
+    
+    <div style="background-color:#FF0000">
+        <button type="button" name ="botoia" onclick="divBerria()">Div berria</button>
+        
+    </div>
+    
+</body>
+
+</html>
