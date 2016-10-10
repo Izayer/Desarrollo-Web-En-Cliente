@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>4</title>
+<script type="text/javascript">
+/*
+    4.	Dado el siguiente código, complétalo para que haga lo siguiente:
+
+•	Cuando pasemos el raton por encima, se ponga verde.
+•	Cuando no este el raton encima, se ponga azul.
+•	Cuando hagamos click, se ponga rojo.
+
+*/
+function verde(element){
+    element.style.backgroundColor="green";
+}
+function azul(element){
+    element.style.backgroundColor="blue";
+}
+function rojo(element){
+    element.style.backgroundColor="red";
+}
+</script>
+<style type="text/css">
+.linea{
+	height:100px; 
+	width:100px; 
+	background:blue;
+	display:inline-block;
+}
+</style>
+
+</head>
+
+<body>
+    <div onmouseover="verde(this)" onmouseout="azul(this)" onclick="rojo(this)" class="linea">ASR31</div>
+    <div onmouseover="verde(this)" onmouseout="azul(this)" onclick="rojo(this)" class="linea">ASR32</div>
+    <div onmouseover="verde(this)" onmouseout="azul(this)" onclick="rojo(this)" class="linea">SM21</div>
+    <div onmouseover="verde(this)" onmouseout="azul(this)" onclick="rojo(this)" class="linea">SM22</div>
+    <div onmouseover="verde(this)" onmouseout="azul(this)" onclick="rojo(this)" class="linea">DW31</div>
+    <div onmouseover="verde(this)" onmouseout="azul(this)" onclick="rojo(this)" class="linea">DW32</div>
+</body>
+
+</html>
