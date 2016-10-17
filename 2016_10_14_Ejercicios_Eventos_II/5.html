@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Eventos 5</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -20,9 +20,34 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+    <script type="text/javascript">
+    /*
+    5.	Crear un área de texto que a medida que se escriba en él se
+    muestre un en un cuadro de texto la cantidad de caracteres disponibles para
+    seguir escribiendo(el máximo serán 140 caracteres).
+    Debajo del numero de caracteres que nos quedan habra una espacio en el que nos diga el
+    codigo del caracter que se ha pulsado y en caso de ser mayuscula esa zona cambiara de color.
+    */
+    window.onload = function(){
+          var textuArea = document.getElementById("descripcion");
+          var karaktereArea = document.getElementById("letras");
+          textuArea.addEventListener("keypress", karaktereInf);
+        } 
+    function karaktereInf(event){
+      
+    }
+
+    </script>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div align="center">
+      <textarea id="descripcion" cols="40" rows="3" name="descripcion"> </textarea></br>
+      <span id="letras">140/140 caracteres</span>
+    </div>
+
+   
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
