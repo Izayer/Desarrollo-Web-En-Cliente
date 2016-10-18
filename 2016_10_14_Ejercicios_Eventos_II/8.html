@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Eventos 8</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -20,9 +20,118 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css"> 
+        .erdian {  
+            position:fixed;
+            background-color: yellow;
+        }  
+    </style>
+    <script type="text/javascript">
+        /*
+          8.Crea una pagina en la que aparecera un cuadrado de color amarillo en
+          el centro de la pantalla. Este cuadrado se debera desplazar 10px hacia la direccion
+          en la que hayamos pulsado las flechas de desplazamiento.
+        */
+        
+        function erdianJarri(){
+          var karratua = document.getElementById("laukia");
+          var wid = 200;
+          var hei = 200;
+          var wid_2 = wid/2;
+          var hei_2 = hei/2;
+          karratua.style.width=wid + "px";
+          karratua.style.height= hei + "px";
+           var w = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+            
+            var h = window.innerHeight
+            || document.documentElement.clientHeight
+            || document.body.clientHeight;
+          
+          var w_2 = w/2;
+          var h_2 = h/2;
+          
+          w_2 = w_2 - wid_2;
+          h_2 = h_2 - hei_2;
+          karratua.style.top = h_2 + "px";
+          karratua.style.left = w_2 + "px";
+        }
+        function goraBehera(kontadoreaY){
+          var karratua = document.getElementById("laukia");
+          
+          var hei = 200;
+          
+          var hei_2 = hei/2;
+          
+            var h = window.innerHeight
+            || document.documentElement.clientHeight
+            || document.body.clientHeight;
+          
+          
+          var h_2 = h/2;
+          h_2 = h_2 - hei_2;
+          var alturaMugi = h_2 + kontadoreaY;
+          karratua.style.top = alturaMugi + "px";
+        }
+        function ezkerEskuin(kontadoreaX){
+          var karratua = document.getElementById("laukia");
+          var wid = 200;
+          
+          var wid_2 = wid/2;
+          
+          karratua.style.width=wid + "px";
+          
+           var w = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+          
+          var w_2 = w/2;
+          w_2 = w_2 - wid_2;
+          var distantziaMugi = w_2 + kontadoreaX;
+          karratua.style.left =distantziaMugi + "px";
+        }
+        window.onload = function(){
+            erdianJarri();
+        document.addEventListener("keydown",mugitu);
+        }
+        
+        var kontadoreaX = 0;
+        var kontadoreaY = 0;
+        
+        function mugitu(evento){
+          var karratua = document.getElementById("laukia");
+          
+          switch(evento.keyCode) {
+            
+                case 37:
+                    // ezkerra
+                    kontadoreaX = kontadoreaX - 10;
+                    ezkerEskuin(kontadoreaX);
+                    break;
+                case 38:
+                    // gora
+                    kontadoreaY = kontadoreaY - 10;
+                    goraBehera(kontadoreaY);
+                    break;
+                case 39:
+                    // eskuinera
+                    kontadoreaX = kontadoreaX + 10;
+                    ezkerEskuin(kontadoreaX);
+                    break;
+                case 40:
+                   //behera
+                   kontadoreaY = kontadoreaY + 10;
+                    goraBehera(kontadoreaY);
+                    break;  
+            }
+        }
+        
+    </script>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    
+    <div id="laukia" class="erdian" ></div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
