@@ -33,8 +33,21 @@
     window.onload = function(){
           var textuArea = document.getElementById("descripcion");
           textuArea.addEventListener("keypress", karaktereInf);
+          textuArea.addEventListener("keydown", karakterekont);
           
         } 
+    function karakterekont(event){
+     
+      var maxKont = 140;
+      
+      var kontadorea = this.value.length;
+     
+      var kontFalta = maxKont - kontadorea;
+      var karaktereArea = document.getElementById("letras");
+      
+      karaktereArea.innerHTML = "Karaktereak: " + kontFalta + "/" + maxKont + " Karaktere Kodea: " + "borratu";
+    }    
+        
     function karaktereInf(event){
       console.log(this.value);
       var maxKont = 140;

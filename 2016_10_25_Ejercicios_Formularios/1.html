@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Formularioa 1 ariketa</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        /*
+        1.	Crear una página con un formulario que nos pedirá nombre, apellidos y dirección
+        en diferentes cuadros de texto. Al pulsar el botón comprobar deberá mostrarnos en
+        pantalla un alert con los datos introducidos. Si algún campo no está rellenado deberá alertarnos de ello.
+        */
+        
+        function balidatu(){
+            var fo = document.formularioa;
+            var mezua = "";
+            if (!fo.name.value == ""){
+                mezua += "Izena:    " + fo.name.value;
+            }else{
+                mezua += "Izena hutsa dago";
+                fo.name.style.backgroundColor="red";
+            }
+            if (!fo.surname.value == ""){
+                mezua += "\nAbizenak:    " + fo.name.value;
+            }else{
+                mezua += "\nAbizenak hutsak daude";
+                fo.surname.style.backgroundColor="red";
+            }
+            if (!fo.address.value == ""){
+                mezua += "\nHelbidea:    " + fo.address.value;
+            }else{
+                mezua += "\nHelbidea hutsa dago";
+                fo.address.style.backgroundColor="red";
+            }
+            alert (mezua);
+        }
+    </script>
+  </head>
+  <body>
+    <!-- EXTRACT FORM HERE =======> -->
+    <div class="container">
+      <div id="contact_form" class="row">
+        <div class="col-md-12">
+          <h2>Formularioa 1 ariketa</h2>
+          <form role="form" id="formularioa" name="formularioa" onsubmit="balidatu()">
+            <div class="form-group">
+              <label class="control-label" for="name">Izena *</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Sar ezazu izena" />
+              </div>
+              <span class="help-block" style="display: none;">Mesedez sar ezazu zure izena.</span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="abizenak">Abizenak *</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="surname" name="surname" placeholder="Sartu itzazu abizenak" />
+              </div>
+              <span class="help-block" style="display: none;">Mesedez sar itzazu zure abizenak.</span>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="address">Helbidea *</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="address" name="address" placeholder="Helbidea" />
+              </div>
+              <span class="help-block" style="display: none;">Mesedez sar ezazu zure helbidea.</span>
+            </div>
+
+            <button type="submit"  id="bidali" class="btn btn-primary btn-lg" data-loading-text="Sending..." style="display: block; margin-top: 10px;">Bidali</button>
+          </form>
+        </div><!--/span-->
+      </div><!--/row-->
+      <hr>
+    </div><!--/.container-->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>
