@@ -20,6 +20,16 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+      .kar {
+        background-color: black;
+        top: 100px;
+        width:200px;
+        height:200px;
+        
+        margin-right: 10px;
+      }
+    </style>
     <script type="text/javascript">
         /*
         2.	Crea una página con un formulario que nos dejara seleccionar
@@ -27,7 +37,47 @@
         Para ello utiliza un menú desplegable para elegir el cuadrado y otro para elegir el color al que cambiara.
         Los cambios se aplicaran cuando pulsemos un botón.
         */
-        
+         window.onload = function(){
+            var panela = document.getElementById('panela');
+                for (var i = 0; i < 4; i++){
+                    var newDiv = document.createElement("div"); 
+                    newDiv.id = "" + (i+1) + ".karratua" ;
+                    newDiv.className += "kar col-md-2 col-sm-2 col-xs-2";
+                    var newContent = document.createTextNode("" + (i+1) + ".laukia" ); 
+                    newDiv.appendChild(newContent); //agrega el nodo de texto al 
+                    panela.appendChild(newDiv);
+                    
+                }
+        }
+        function koloreAldatu(){
+        var foka = document.formularioa.karratuak;
+        var foko = document.formularioa.koloreak;
+        var optfoka = foka.options[foka.selectedIndex].value;
+        var optfoko = foko.options[foko.selectedIndex].value;
+        console.log(optfoka);
+            switch(optfoka) {
+              case "1.karratua":
+                var bat = document.getElementById("1.karratua");
+                bat.style.backgroundColor=optfoko;
+                break;
+              case "2.karratua":
+                var bi = document.getElementById("2.karratua");
+                bi.style.backgroundColor=optfoko;
+                break;
+              case "3.karratua":
+                var hiru = document.getElementById("3.karratua");
+                hiru.style.backgroundColor=optfoko;
+                break;
+              case "4.karratua":
+                var lau = document.getElementById("4.karratua");
+                lau.style.backgroundColor=optfoko;
+                break;
+              
+              default:
+                console.log("error");
+                break;
+            }
+        }
     </script>
   </head>
   <body>
@@ -35,16 +85,16 @@
       <div id="contact_form" class="row">
         <div class="col-md-12">
           <h2>Formularioa 2 ariketa</h2>
-          <form role="form" id="formularioa" name="formularioa" onsubmit="balidatu()">
+          <form role="form" id="formularioa" name="formularioa" >
         
             <div class="form-group">
               <label class="control-label" for="karratuak">Karratuak</label>
               <select name="karratuak" class="form-control" required>
                 <option value="Karratuak" >Karratuak</option>
-                <option value="1.Karratua" >1.Karratua</option>
-                <option value="2.Karratua" >2.Karratua</option>
-                <option value="3.Karratua" >3.Karratua</option>
-                <option value="4.Karratua" >4.Karratua</option>
+                <option value="1.karratua" >1.Karratua</option>
+                <option value="2.karratua" >2.Karratua</option>
+                <option value="3.karratua" >3.Karratua</option>
+                <option value="4.karratua" >4.Karratua</option>
                 
               </select>
         
@@ -53,18 +103,22 @@
               <label class="control-label" for="koloreak">Koloreak</label>
               <select name="koloreak" class="form-control" required>
                 <option value="Koloreak" >Koloreak</option>
-                <option value="gorria" >Gorria</option>
-                <option value="urdina" >Urdina</option>
-                <option value="horia" >Horia</option>
-                <option value="orlegia" >Orlegia</option>
+                <option value="red" >Gorria</option>
+                <option value="blue" >Urdina</option>
+                <option value="yellow" >Horia</option>
+                <option value="green" >Orlegia</option>
                 
               </select>
         
             </div>
 
-            <button type="submit"  id="aldatu" class="btn btn-primary btn-lg" data-loading-text="Sending..." style="display: block; margin-top: 10px;">Kolorea aldatu</button>
+            <button type="button"  id="aldatu" class="btn btn-primary btn-lg" data-loading-text="Sending..." style="display: block; margin-top: 10px;"onclick="koloreAldatu()" >Kolorea aldatu</button>
           </form>
+          
         </div><!--/span-->
+        <div id="panela">
+          
+        </div>
       </div><!--/row-->
       <hr>
     </div><!--/.container-->
