@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Formularioa 4 ariketa</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        /*
+        4.	Crea una página con un formulario que nos pedirá datos personales cada uno en un cuadro de texto:
+        nombre, apellidos, dirección, población, código postal, provincia. Ordena los campos de manera  que
+        queden en dos columnas. Al final del formulario habrá un botón de enviar y otro de limpiar el formulario.
+        Al iniciar la página el cuadro de texto del nombre deberá tener el puntero listo para escribir y cuando
+        pulsemos la tecla enter saltara al siguiente campo. En caso de que no se haya rellenado el campo deberá
+        poner el fondo rojo y no permitirá pulsar el botón de envió.
+        */
+         window.onload = function(){
+         }
+
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="contact_form" class="row">
+        <div class="col-md-12">
+          <h2>Formularioa 2 ariketa</h2>
+          <form data-toggle="validator" role="form">
+            <div class="col-md-6 col-xs-6">
+  <div class="form-group">
+    <label for="inputName" class="control-label">Izena</label>
+    <input type="text" class="form-control" id="inputName" placeholder="Xempronio" required>
+  </div>
+  <div class="form-group">
+    <label for="inputSurname" class="control-label">Abizenak</label>
+    <input type="text" class="form-control" id="inputSurname" placeholder="Lehendakari" required>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail" class="control-label">E-posta</label>
+    <input type="email" class="form-control" id="inputEmail" placeholder="Xempronio@gmail.com" data-error="Emaila ez da balekoa, adibidea: xempronio@gmail.com" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group">
+    <label for="inputPkod" class="control-label">Posta Kodea</label>
+    <input type="pkod" pattern="^[0-9]{5}" maxlength="5" minlength="5" class="form-control" id="inputTel" placeholder="P-Kodea, Adibidez 20120" data-error="5 zifra dituen kode numerikoa sartu" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  </div><!--row6-->
+  <div class="col-md-6">
+  <div class="form-group">
+    <label for="inputTel" class="control-label">Telefono</label>
+    <input type="tel" pattern="^[0-9]{9}" maxlength="9" minlength="9" class="form-control" id="inputTel" placeholder="943555677" data-error="Bete ezazu, adibidez 943555677" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress" class="control-label">Helbidea</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Helbidea" data-error="Ez zara hor bizi, gezurtero" pattern="^[A-Za-z0-9'\.\-\s\,]" required>
+    <div class="help-block with-errors"></div>
+  </div>
+  <div class="form-group">
+    <label for="inputProvince" class="control-label">Probintzia</label>
+
+    <select class="selectpicker form-control"  title="Aukeratu bat">
+                    
+ <option value='alava'>Álava</option>
+ <option value='albacete'>Albacete</option>
+ <option value='alicante'>Alicante/Alacant</option>
+ <option value='almeria'>Almería</option>
+ <option value='asturias'>Asturias</option>
+ <option value='avila'>Ávila</option>
+ <option value='badajoz'>Badajoz</option>
+ <option value='barcelona'>Barcelona</option>
+ <option value='burgos'>Burgos</option>
+ <option value='caceres'>Cáceres</option>
+ <option value='cadiz'>Cádiz</option>
+ <option value='cantabria'>Cantabria</option>
+ <option value='castellon'>Castellón/Castelló</option>
+ <option value='ceuta'>Ceuta</option>
+ <option value='ciudadreal'>Ciudad Real</option>
+ <option value='cordoba'>Córdoba</option>
+ <option value='cuenca'>Cuenca</option>
+ <option value='girona'>Girona</option>
+ <option value='laspalmas'>Las Palmas</option>
+ <option value='granada'>Granada</option>
+ <option value='guadalajara'>Guadalajara</option>
+ <option value='guipuzcoa'>Guipúzcoa</option>
+ <option value='huelva'>Huelva</option>
+ <option value='huesca'>Huesca</option>
+ <option value='illesbalears'>Illes Balears</option>
+ <option value='jaen'>Jaén</option>
+ <option value='acoruña'>A Coruña</option>
+ <option value='larioja'>La Rioja</option>
+ <option value='leon'>León</option>
+ <option value='lleida'>Lleida</option>
+ <option value='lugo'>Lugo</option>
+ <option value='madrid'>Madrid</option>
+ <option value='malaga'>Málaga</option>
+ <option value='melilla'>Melilla</option>
+ <option value='murcia'>Murcia</option>
+ <option value='navarra'>Navarra</option>
+ <option value='ourense'>Ourense</option>
+ <option value='palencia'>Palencia</option>
+ <option value='pontevedra'>Pontevedra</option>
+ <option value='salamanca'>Salamanca</option>
+ <option value='segovia'>Segovia</option>
+ <option value='sevilla'>Sevilla</option>
+ <option value='soria'>Soria</option>
+ <option value='tarragona'>Tarragona</option>
+ <option value='santacruztenerife'>Santa Cruz de Tenerife</option>
+ <option value='teruel'>Teruel</option>
+ <option value='toledo'>Toledo</option>
+ <option value='valencia'>Valencia/Valéncia</option>
+ <option value='valladolid'>Valladolid</option>
+ <option value='vizcaya'>Vizcaya</option>
+ <option value='zamora'>Zamora</option>
+ <option value='zaragoza'>Zaragoza</option>
+
+        </select>
+    <div class="help-block with-errors"></div>
+  </div>
+  </div>
+  <div class="col-md-1 col-xs-1 col-md-offset-10 col-xs-offset-10">
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">BIDALI</button>
+  </div>
+  </div>
+  <div class="col-md-1 col-xs-1">
+  <div class="form-group">
+    <button type="reset" class="btn btn-primary">EZABATU</button>
+  </div>
+  </div>
+</form>
+
+          
+        </div>
+      </div><!--/row-->
+      <hr>
+    </div><!--/.container-->
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="validator.js"></script>
+    
+  </body>
+</html>
