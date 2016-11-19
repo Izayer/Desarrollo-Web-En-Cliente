@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Zazpi t'erdi | Mahia</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/mahia.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+    window.onload = function(){
+      $('#modal').prop('disabled', false);
+      $('#modalitxi').prop('disabled', false);
+      $('#modalitxi2').prop('disabled', false);
+      $('#modal').hide();
+      $('#modal2').prop('disabled', false);
+
+      // $('#modal').click();
+      
+    function f5() {
+      location.reload();
+    }
+    function indexera() {
+      location.href = "index.html";
+    }
+    document.getElementById("modalitxi").addEventListener("click", f5);
+    document.getElementById("modalitxi2").addEventListener("click", f5);
+    
+    }
+    </script>
+  </head>
+  <body>
+<div class="section section-danger" style="background-color:#15730F;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center text-primary" style="color:white;">JOKALARIAK</h1>
+                        <p class="text-center"style="color:#0C3C61;">Zorte on!</p>
+                        <p id="zeinenTxanda" class="text-center"style="color:white;"></p>
+                    </div>
+                </div>
+                <div class="row" id="jSar">
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container">
+  
+  <!-- Trigger the modal with a button -->
+  <button id="modal" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button id="modalitxi" type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Klasifikazioa</h4>
+        </div>
+        <div class="modal-body">
+          <p id="modalp1">Erronda hontako Irabazleak: </p>
+          <p id="modalp2"></p>
+          <p id="modalp3"></p>
+          <p id="modalp4"></p>
+          <p id="modalp5"></p>
+          <p id="modalp6"></p>
+          <p id="modalp7"></p>
+          <p id="modalp8"></p>
+          <p id="modalp9"></p>
+          <p id="modalp10"></p>
+          <p id="modalp11"></p>
+          <p id="modalp12"></p>
+          <p id="modalp13"></p>
+          <p id="modalp14"></p>
+          <p id="modalp15"></p>
+        </div>
+        <div class="modal-footer">
+          <button  id="modalitxi2" type="button" class="btn btn-default" data-dismiss="modal">Hurrengo txanda</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+  </body>
+</html>
