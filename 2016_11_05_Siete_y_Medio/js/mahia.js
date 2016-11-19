@@ -22,43 +22,30 @@ $( document ).ready(function() {
     
         if(izenak)
         {
-            console.log(izenak);
         }
         else{
             var izenak=getGET();
-            console.log(izenak);
-            
         }
-//     if (localStorage.izenak) {
-//     console.log(izenak);
-//     var izenak = localStorage.getItem('izenak');
-// } else {
-// localStorage.setItem('izenak', JSON.stringify(getGET()));
-// var izenak = localStorage.getItem('izenak');
 
-// }
-    
-    
     function nahastu(array) {
-    var i = array.length,
-        j = 0,
-        temp;
+        var i = array.length,
+            j = 0,
+            temp;
 
-    while (i--) {
-
-        j = Math.floor(Math.random() * (i+1));
-
-        // swap randomly chosen element with current element
-        temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-
-    }
+        while (i--) {
+    
+            j = Math.floor(Math.random() * (i+1));
+    
+            //nahastu aleatorioki
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+    
+        }
 
     return array;
-}
+    }
 
-// var ranNums = nahastu([1,2,3,4,5,6,7,8]);
 
 var jokalariKop = Object.keys(izenak).length;
 var jokalariArray = [];
@@ -90,58 +77,47 @@ function jokalariSortu(jokalariKop,jokalariArray,irudia,izena){
         }
         $("#jSar").append('<div id="trumposo" class="col-md-2 col-xs-4"><div class="row"><img src="img/trump_oso.jpg" class="center-block img-circle img-responsive col-md-12 "/></div><div class="row"><h3 id="trumposoizena" class="text-center col-md-12" style="color:white;">Trumposo</h3></div><div class="row"><div id="trumposokarta" class="center-block col-md-12  img-responsive" style="border:solid 2px white;height:300px;background-color:#5C0C61;background-image:url('+"'img/sempronio.jpg'"+');-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></div></div><div class="row"><div id="trumposokont" class=" col-md-12  col-xs-12 btn-default btn">0</div></div></div>');
 
-        //  $("#jSar").append('<div id="trumposo" class="col-md-2 col-xs-2"><img src="img/trump_oso.jpg" class="center-block img-circle img-responsive"/><h3 id="trumposoizena" class="text-center" style="color:white;">Trumposo</h3><div id="trumposokarta" class="center-block  img-responsive" style="border:solid 2px white;height:250px;background-color:#5C0C61;background-image:url('+"'img/sempronio.jpg'"+'); "></div></div>');
-
     }
-//     <div class="btn-group" role="group" aria-label="Banka">
-//   <button id="'+i+'eskatu"type="button" class="btn btn-warning">Eskatu</button>
-//   <button id="'+i+'utzi"type="button" class="btn btn-danger">Utzi</button>
-// </div>
-    // var t = JSON.parse(izenak);
-//     for(var key in izenak) {
-//         var value = [];
-//     value = value.push(izenak[key]);
-// }
+
 var izena = [];
 var xempro = "xempronio"
 var numXempro = 1;
-for (var k in izenak) {
-    
-        if (izenak.hasOwnProperty(k)) {
-           var value2 = izenak[k];
-           if (value2==""){
-               value2 = numXempro + xempro;
-               numXempro++;
-           }
-           izena.push(value2);
+    for (var k in izenak) {
+        
+            if (izenak.hasOwnProperty(k)) {
+               var value2 = izenak[k];
+               if (value2==""){
+                   value2 = numXempro + xempro;
+                   numXempro++;
+               }
+               izena.push(value2);
+            }
         }
-    }
     izena = nahastu(izena);
 
-if (localStorage.getItem("baiEz") == "1"){    
-    localStorage.setItem("jokalaria1",JSON.stringify(["1xempronio",0,0]));
-    localStorage.setItem("jokalaria2",JSON.stringify(["2xempronio",0,0]));
-    localStorage.setItem("jokalaria3",JSON.stringify(["3xempronio",0,0]));
-    localStorage.setItem("jokalaria4",JSON.stringify(["4xempronio",0,0]));
-    localStorage.setItem("jokalaria5",JSON.stringify(["5xempronio",0,0]));
-    localStorage.setItem("jokalaria6",JSON.stringify(["6xempronio",0,0]));
-    localStorage.setItem("jokalaria7",JSON.stringify(["7xempronio",0,0]));
-    localStorage.setItem("jokalaria8",JSON.stringify(["8xempronio",0,0]));
-for(var x = 1 ; x <= izena.length; x++){
-    if (izena[x-1]==""){
-        var joArrayDefault = [x+"Xempronio",0,0];
-    }else{
-    var joArrayDefault = [izena[x-1],0,0];
-    localStorage.setItem("jokalaria"+x, JSON.stringify(joArrayDefault));
-    // console.log(joArrayDefault);
-    // joArrayDefault.toString();
+    if (localStorage.getItem("baiEz") == "1"){    
+        localStorage.setItem("jokalaria1",JSON.stringify(["1xempronio",0,0]));
+        localStorage.setItem("jokalaria2",JSON.stringify(["2xempronio",0,0]));
+        localStorage.setItem("jokalaria3",JSON.stringify(["3xempronio",0,0]));
+        localStorage.setItem("jokalaria4",JSON.stringify(["4xempronio",0,0]));
+        localStorage.setItem("jokalaria5",JSON.stringify(["5xempronio",0,0]));
+        localStorage.setItem("jokalaria6",JSON.stringify(["6xempronio",0,0]));
+        localStorage.setItem("jokalaria7",JSON.stringify(["7xempronio",0,0]));
+        localStorage.setItem("jokalaria8",JSON.stringify(["8xempronio",0,0]));
+        for(var x = 1 ; x <= izena.length; x++){
+                if (izena[x-1]==""){
+                    var joArrayDefault = [x+"Xempronio",0,0];
+                }else{
+                    var joArrayDefault = [izena[x-1],0,0];
+                    localStorage.setItem("jokalaria"+x, JSON.stringify(joArrayDefault));
+            
+                }
+    
+            }
+    localStorage.setItem("baiEz", "0");
+    var trumposoArray = ["Trumposo",0,0];
+    localStorage.setItem("trumposomarkagailua",JSON.stringify(trumposoArray));
     }
-// eval( 'var jokalaria' + x + '=' + "'" + joArrayDefault + "'" ); 
-}
-localStorage.setItem("baiEz", "0");
-var trumposoArray = ["Trumposo",0,0];
-localStorage.setItem("trumposomarkagailua",JSON.stringify(trumposoArray));
-}
 
 var jokalaria1 = JSON.parse(localStorage.getItem("jokalaria1"));
 var jokalaria2 = JSON.parse(localStorage.getItem("jokalaria2"));
@@ -176,25 +152,9 @@ for(var n = 1 ; n <= izena.length; n++){
 }
 
 
-// var jokalaria1 = jokalaria1.split(",");
-
-// var names = [];
-// names[0] = prompt("New member name?");
-// localStorage.setItem("names", JSON.stringify(names));
-
-// //...
-// var storedNames = JSON.parse(localStorage.getItem("names"));
-
 
     jokalariSortu(jokalariKop,jokalariArray,irudia,izena);
-    
 
-
-// <div class="col-md-1">
-//                         <img src="img/minion/1.jpg" class="center-block img-circle img-responsive">
-//                         <h3 class="text-center">John Doe</h3>
-//                         <p class="text-center">Developer</p>
-//                     </div>
 
 
 
@@ -285,21 +245,7 @@ function utzi(i){
     disabled(i);
     var izenaSet = document.getElementById(i+"izena").innerHTML;
     
-    console.log(izenaSet);
-    // for ( var z in jokalariKolekzioa){
-    //     console.log(jokalariKolekzioa[z]);
-    //     // var zjokalariKolekzioa = jokalariKolekzioa[z];
-    //     if (jokalariKolekzioa[z][0] == izenaSet){
-    //         console.log("sartu da");
-    //         jokalariKolekzioa[z][1] = kurrentKartaInt;
-    //         var m = z + 1;
-    //         console.log(m);
-    //         localStorage.setItem("jokalaria"+ m, JSON.stringify(jokalariKolekzioa[z]));
-    //         console.log(localStorage.getItem("jokalaria"+m));
-    //     }
-        
-        
-    // }
+
     
     if (jokalaria1[0] == izenaSet){
         jokalaria1[1] = kurrentKartaInt;
@@ -407,16 +353,10 @@ console.log(izena);
         irabazleak.push(jokalariKolekzioa[g]);
         bol = false;
         }else{
-        
-        // if (g == 0){
-        //         console.log(g);
-        //         irabazleak.push(jokalariKolekzioa[g]);
-            
-        // }
-        // else {
+
                 if (irabazleak[0][1] == jokalariKolekzioa[g][1]){
                 irabazleak.push(jokalariKolekzioa[g]);}
-            // }
+
         }}
     }
     }
@@ -588,5 +528,5 @@ function jokoaAmaitu(){
     function indexera() {
       location.href = "index.html";
     }
-console.log(jokalariKolekzioa.sort(compareThirdColumn));
+
 });
