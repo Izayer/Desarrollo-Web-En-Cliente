@@ -1,8 +1,8 @@
 
 $( document ).ready(function() {
-        localStorage.setItem("baiEz", "1");
-    console.log(localStorage.getItem("baiEz"));
-    inputZenbat = document.getElementById("zenbat").elements.namedItem("zjokalari");
+    
+        localStorage.setItem("baiEz", "1");//mahia.js baloreak local storagen sartzeko semaforoa.
+        inputZenbat = document.getElementById("zenbat").elements.namedItem("zjokalari");
 
     $( "#gehi" ).click(function() {
         if (inputZenbat.value===""){

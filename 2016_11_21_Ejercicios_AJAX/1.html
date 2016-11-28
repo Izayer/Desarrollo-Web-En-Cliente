@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>1 AJAX</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script type="text/javascript">
+        /*
+        1.	Crear una página en el que aparecerá un cuadro de texto y un boton.
+        Al pulsar el boton pediremos al servidor web el contenido del fichero que
+        le indiquemos en el cuadro de texto. Este texto deberá aparecer debajo de
+        los elementos en un cuadro. En el caso de que el fichero no exista en el 
+        servidor tendra que avisarnos de ello.
+        */
+        
+        function getXMLHTTPRequest(){
+            versiones = ["MSXML2.XMLHttp.5.0", "MSXML2.XMLHttp.4.0",
+            "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp",
+            "Microsoft.XMLHttp"];
+                    if(typeof XMLHttpRequest != "undefined"){
+                    return new XMLHttpRequest();
+                    } else {
+                    for (var i = 0; i < versiones.length; i++) {
+                    try{
+                    req = new ActiveXObject(versiones[i]);
+                    return req;
+                    } catch (err1) {
+                    // Esto evita que se genere un error y pare la ejec.
+                    }
+                }
+            }
+        }
+        
+        function inicializar(url){
+            http=getXMLHTTPRequest();
+            http.onreadystatechange = procesarEvento;
+            http.open("GET", url, true);
+            http.send(null);
+            tiempo=setTimeout("finDeEspera()",3000);
+        }
+        function procesarEvento(){
+            var detalles = document.getElementById("detalles");
+            if(http.readyState == 4){
+                if(http.status==200) {
+                    clearTimeout(tiempo);
+                    // Aquí escribiremos lo que queremos que se
+                    //ejecute tras recibir la respuesta
+                    var datosDoc = http.responseText;
+				    document.getElementById('contenido').innerHTML = datosDoc;
+                } else {
+                    // Ha ocurrido un error
+                    alert("Error: "+http.statusText);
+                }
+            }
+        }
+        function finDeEspera(){
+            http.abort();
+            // Mostrar mensaje de sobrecarga del servidor
+            // o en la pagina HTML
+            alert('Intente nuevamente más tarde');
+        }
+        
+        
+    </script>
+
+
+  </head>
+  <body>
+    <!-- Contextual button for informational alert messages -->
+    <button type="button" onclick="inicializar('1.xml')" class="btn btn-info">Display</button>
+    
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Contenido del fichero</h3>
+        </div>
+        <div id ="contenido"  class="panel-body">
+            
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  </body>
+</html>

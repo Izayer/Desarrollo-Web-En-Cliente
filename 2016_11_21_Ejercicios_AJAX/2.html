@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>2 AJAX</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script type="text/javascript">
+        /*
+            2.	Crear una página a la que le pediremos la lista de películas almacenadas
+            en un fichero XML que estara en el servidor. A la hora de mostrarlos,
+            se creara una tabla y apareceran en dos columnas separadas.
+        */
+        
+        function getXMLHTTPRequest(){
+            versiones = ["MSXML2.XMLHttp.5.0", "MSXML2.XMLHttp.4.0",
+            "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp",
+            "Microsoft.XMLHttp"];
+                    if(typeof XMLHttpRequest != "undefined"){
+                    return new XMLHttpRequest();
+                    } else {
+                    for (var i = 0; i < versiones.length; i++) {
+                    try{
+                    req = new ActiveXObject(versiones[i]);
+                    return req;
+                    } catch (err1) {
+                    // Esto evita que se genere un error y pare la ejec.
+                    }
+                }
+            }
+        }
+        
+        function inicializar(url){
+            http=getXMLHTTPRequest();
+            http.onreadystatechange = procesarEvento;
+            http.open("GET", url, true);
+            http.send(null);
+            tiempo=setTimeout("finDeEspera()",3000);
+        }
+        function procesarEvento(){
+            var detalles = document.getElementById("detalles");
+            if(http.readyState == 4){
+                if(http.status==200) {
+                    clearTimeout(tiempo);
+                    // Aquí escribiremos lo que queremos que se
+                    //ejecute tras recibir la respuesta
+                    xmlFuntzioa(this);
+                } else {
+                    // Ha ocurrido un error
+                    alert("Error: "+http.statusText);
+                }
+            }
+        }
+        function finDeEspera(){
+            http.abort();
+            // Mostrar mensaje de sobrecarga del servidor
+            // o en la pagina HTML
+            alert('Intente nuevamente más tarde');
+        }
+        function xmlFuntzioa(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table="<tr><th>Director</th><th>Título</th></tr>";
+            var x = xmlDoc.getElementsByTagName("Pelicula");
+            for (i = 0; i <x.length; i++) {
+                table += "<tr><td>" +
+                x[i].getElementsByTagName("Director")[0].childNodes[0].nodeValue +
+                "</td><td>" +
+                x[i].getElementsByTagName("Titulo")[0].childNodes[0].nodeValue +
+                "</td></tr>";
+            }
+            document.getElementById("taula").innerHTML = table;
+        }
+        
+        
+    </script>
+
+
+  </head>
+  <body>
+    <!-- Contextual button for informational alert messages -->
+    <button type="button" onclick="inicializar('2.xml')" class="btn btn-info">Display</button>
+    
+    <table id="taula" class="table table-hover table-striped">
+
+    </table>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  </body>
+</html>
