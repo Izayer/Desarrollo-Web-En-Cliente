@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>2 AJAX JSON</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <style type="text/css">
+    html { 
+  background: url(img/names.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.centrado {
+    width: 500px;
+    height: 200px;
+    background: black;
+    color:white;
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+    </style>   
+    <script type="text/javascript">
+        /*
+            2.	Tendremos un fichero con datos en formato JSON, en el que habra una serie de nombres.
+            El ejercicio consiste en introducir un nombre cualquiera en un cuadro de texto y segun estemos
+            escribiendo mostrara sugerencias que coincidan con los nombres del servidor.
+            Si no hay coincidencias mostrara un mensaje personalizado.
+
+        */
+        function getXMLHTTPRequest(){
+            versiones = ["MSXML2.XMLHttp.5.0", "MSXML2.XMLHttp.4.0",
+            "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp",
+            "Microsoft.XMLHttp"];
+                    if(typeof XMLHttpRequest != "undefined"){
+                    return new XMLHttpRequest();
+                    } else {
+                    for (var i = 0; i < versiones.length; i++) {
+                    try{
+                    req = new ActiveXObject(versiones[i]);
+                    return req;
+                    } catch (err1) {
+                    // Esto evita que se genere un error y pare la ejec.
+                    }
+                }
+            }
+        }
+function inicializar(url){
+            http=getXMLHTTPRequest();
+            http.onreadystatechange = procesarEvento;
+            http.open("GET", url, true);
+            http.send(null);
+            tiempo=setTimeout("finDeEspera()",3000);
+        }
+        function procesarEvento(){
+
+            if(http.readyState == 4){
+                if(http.status==200) {
+                    clearTimeout(tiempo);
+                    // Aquí escribiremos lo que queremos que se
+                    //ejecute tras recibir la respuesta
+                    xmlFuntzioa(this);
+                } else {
+                    // Ha ocurrido un error
+                    alert("Error: "+http.statusText);
+                }
+            }
+        }
+        function finDeEspera(){
+            http.abort();
+            // Mostrar mensaje de sobrecarga del servidor
+            // o en la pagina HTML
+            alert('Intente nuevamente más tarde');
+        }
+        function xmlFuntzioa(xml) {
+
+            // var xmlDoc = xml.responseXML;
+            var jsonObj = JSON.parse(xml.responseText);
+
+            konparatu(jsonObj);
+
+        }
+        function konparatu(jsonObj){
+            var q = document.getElementById("txt1").value;
+            console.log(q);
+            var idazteko = document.getElementById("txtHint");
+            idazteko.innerHTML = "";
+            var kont = 1;
+            if (q !== ""){
+                q = q.toLowerCase();
+                var len = q.length;
+                
+                for (key in jsonObj){
+
+                    var jkon = jsonObj[key].substr(0, len);
+                    jkon = jkon.toLowerCase();
+                    console.log(jkon);
+                    if (q == jkon){
+                        if (kont == 1){
+                        console.log(jsonObj[key]);
+                        idazteko.innerHTML += jsonObj[key];
+                        kont++;
+                        }
+                        else{
+                            idazteko.innerHTML += ", " + jsonObj[key];
+                        }
+                    }
+                }
+                if (idazteko.innerHTML == ""){
+                    idazteko.innerHTML = "No se han encontrado sugerencias!"
+                }
+            }else{
+                idazteko.innerHTML = "";
+            }
+
+        }
+</script>
+
+  </head>
+  <body>
+<div class="centrado">
+    <div class="container">
+    
+        
+    <h1>Izenak</h1>
+
+
+
+<form action=""> 
+Izena: <input style="color:black;" type="text" id="txt1" onkeyup="inicializar('izenak.json')">
+</form>
+
+<p>Sugerencia: <span id="txtHint"></span></p> 
+</div>
+</div>
+</div>
+
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  </body>
+</html>

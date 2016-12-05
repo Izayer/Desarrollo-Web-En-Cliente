@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Peliculas>
+  <Pelicula>
+     <Director>Quentin Tarantino</Director >
+     <Titulo>Reservoir dogs</Titulo>
+     <Imagen>dogs</Imagen>
+     <Sinopsis>Una banda organizada es contratada para atracar una empresa y llevarse unos diamantes. Sin embargo, antes de que suene la alarma, la policía ya está allí. Algunos miembros de la banda mueren en el enfrentamiento con las fuerzas del orden, y los demás se reúnen en el lugar convenido.</Sinopsis>
+  </Pelicula >
+  <Pelicula >
+     <Director>Danny Boyle</Director >
+     <Titulo>Trainspotting</Titulo>
+     <Imagen>trainspotting</Imagen>
+     <Sinopsis>Mark Renton, un joven escocés, y sus amigos son adictos a la heroína, lo que significa que viven fuera de la realidad, en un mundo aparte. Dentro del grupo hay un psicópata alcohólico y violento, un joven desesperado, un mujeriego con un conocimiento enciclopédico sobre Sean Connery y un entusiasta de las caminatas y de Iggy Pop.</Sinopsis>
+  </Pelicula >
+  <Pelicula >
+     <Director>Christopher Nolan</Director >
+     <Titulo>Batman Begins</Titulo>
+     <Imagen>batman</Imagen>
+     <Sinopsis>Nueva adaptación del famoso cómic. Narra los orígenes de la leyenda de Batman y los motivos que lo convirtieron en el representante del Bien en la ciudad de Gotham. Bruce Wayne vive obsesionado con el recuerdo de sus padres, muertos a tiros en su presencia. Atormentado por el dolor, se va de Gotham y recorre el mundo hasta que encuentra a un extraño personaje que lo adiestra en todas las disciplinas físicas y mentales que le servirán para combatir el Mal. Por esta razón, la Liga de las Sombras, una poderosa y subversiva sociedad secreta, dirigida por el enigmático Ra's Al Ghul, intenta reclutarlo. Cuando Bruce vuelve a Gotham, la ciudad está dominada por el crimen y la corrupción. Con la ayuda de su leal mayordomo Alfred, del detective de la policía Jim Gordon y de Lucius Fox, su colega en una Sociedad de Ciencias Aplicadas, Wayne libera a su alter ego: Batman, un justiciero enmascarado que utiliza la fuerza, la inteligencia y la más alta tecnología para luchar contra las siniestras fuerzas que amenazan con destruir la ciudad.</Sinopsis>
+  </Pelicula >
+  <Pelicula >
+     <Director>Christopher Nolan</Director >
+     <Titulo>Inception</Titulo>
+     <Imagen>inception</Imagen>
+     <Sinopsis>Dom Cobb (DiCaprio) es un experto en el arte de apropiarse, durante el sueño, de los secretos del subconsciente ajeno. La extraña habilidad de Cobb le ha convertido en un hombre muy cotizado en el mundo del espionaje, pero también lo ha condenado a ser un fugitivo y, por consiguiente, a renunciar a llevar una vida normal. Su única oportunidad para cambiar de vida será hacer exactamente lo contrario de lo que ha hecho siempre: la incepción, que consiste en implantar una idea en el subconsciente en lugar de sustraerla. Sin embargo, su plan se complica debido a la intervención de alguien que parece predecir cada uno de sus movimientos, alguien a quien sólo Cobb podrá descubrir.</Sinopsis>
+  </Pelicula >
+  <Pelicula >
+     <Director>Guy Ritchie</Director >
+     <Titulo>Snatch</Titulo>
+     <Imagen>snatch</Imagen>
+     <Sinopsis>Franky es un ladrón de diamantes que tiene que entregar un valioso ejemplar a su jefe Avi, pero, antes de hacerlo, se deja convencer por un tal Boris para apostar en un combate ilegal de boxeo. En realidad, se trata de una trampa para arrebatarle el diamante. Cuando Avi se entera, contrata a Tony para encontrar a Franky y al diamante. Descubierto el triste destino de Franky, la recuperación de la gema desaparecida provoca una situación caótica, donde el engaño, el chantaje y el fraude se mezclan de forma sangrienta con perros, diamantes, boxeadores y gran variedad de armas.</Sinopsis>
+  </Pelicula >
+  <Pelicula >
+     <Director>Ridley Scott</Director >
+     <Titulo>Gladiator</Titulo>
+     <Imagen>gladiator</Imagen>
+     <Sinopsis>En el año 180, el Imperio Romano domina todo el mundo conocido. Tras una gran victoria sobre los bárbaros del norte, el anciano emperador Marco Aurelio (Richard Harris) decide transferir el poder a Máximo (Russell Crowe), bravo general de sus ejércitos y hombre de inquebrantable lealtad al imperio. Pero su hijo Cómodo (Joaquin Phoenix), que aspiraba al trono, no lo acepta y trata de asesinar a Máximo.</Sinopsis>
+  </Pelicula >
+</Peliculas>

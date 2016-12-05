@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>3 AJAX JSON</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <style type="text/css">
+    html { 
+  background: url(img/fondo.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.centrado {
+  position: absolute;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+    </style>   
+    <script type="text/javascript">
+        /*
+            3.	Rehacer el ejercicio 4 de los ejercicio anteriores para que en vez de tener los datos en formato XML, este en JSON.
+        
+            Crear una página en la que habra un boton para pedir al servidor los datos de las peliculas.
+            Cuando pulsemos sobre el nos apareceran dos objetos select (menu desplegable).
+            En el primero elegiremos el nombre del director y en funcion de esa eleccion, en el segundo nos apareceran
+            las peliculas de ese director. Cuando hayamos elegido la pelicula aparecera una breve sinospsis de la pelicula
+            debajo de los objetos select. 
+            Si no se selecciona director, no aparecera ninguna pelicula para elegir.
+
+        */
+        var x;
+        function getXMLHTTPRequest(){
+            versiones = ["MSXML2.XMLHttp.5.0", "MSXML2.XMLHttp.4.0",
+            "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp",
+            "Microsoft.XMLHttp"];
+                    if(typeof XMLHttpRequest != "undefined"){
+                    return new XMLHttpRequest();
+                    } else {
+                    for (var i = 0; i < versiones.length; i++) {
+                    try{
+                    req = new ActiveXObject(versiones[i]);
+                    return req;
+                    } catch (err1) {
+                    // Esto evita que se genere un error y pare la ejec.
+                    }
+                }
+            }
+        }
+        
+        function inicializar(url){
+            http=getXMLHTTPRequest();
+            http.onreadystatechange = procesarEvento;
+            http.open("GET", url, true);
+            http.send(null);
+            tiempo=setTimeout("finDeEspera()",3000);
+        }
+        function procesarEvento(){
+            var detalles = document.getElementById("detalles");
+            if(http.readyState == 4){
+                if(http.status==200) {
+                    clearTimeout(tiempo);
+                    // Aquí escribiremos lo que queremos que se
+                    //ejecute tras recibir la respuesta
+                    xmlFuntzioa(this);
+                } else {
+                    // Ha ocurrido un error
+                    alert("Error: "+http.statusText);
+                }
+            }
+        }
+        function finDeEspera(){
+            http.abort();
+            // Mostrar mensaje de sobrecarga del servidor
+            // o en la pagina HTML
+            alert('Intente nuevamente más tarde');
+        }
+        function xmlFuntzioa(xml) {
+            
+            var errepikatua = false;
+            var jsonObj = JSON.parse(xml.responseText);
+            console.log(jsonObj);
+            var selekt1 = '<div class="form-group"><label for="sel1" style="color:white;">Directores:</label><select class="form-control" id="sel1" onchange="inicializar2()"><option value="" selected">Elige un Director</option>';
+            var zuzendariArray = [];
+            x = jsonObj;
+            for (var i = 0; i <jsonObj.Peliculas.Pelicula.length; i++) {
+            
+                var konparatzeko = jsonObj.Peliculas.Pelicula[i].Director;
+
+                for (v in zuzendariArray){
+
+                    if(zuzendariArray[v] == konparatzeko ){
+                        errepikatua = true;
+                    }
+                }
+                if (!errepikatua){
+                zuzendariArray.push(jsonObj.Peliculas.Pelicula[i].Director);
+                selekt1 += '<option data-toggle="modal" data-target="#myModal" value="'+ jsonObj.Peliculas.Pelicula[i].Director  +'">'+ jsonObj.Peliculas.Pelicula[i].Director  +'</option>';
+                }else{
+                    errepikatua = false;
+                }
+            }
+            selekt1 += '</select></div>';
+            document.getElementById("select1").innerHTML = selekt1;
+
+            // if (){
+              
+            // }
+        }
+        function inicializar2(url){
+           xmlFuntzioa2();
+        }
+        function inicializar3(url){
+           xmlFuntzioa3();
+        }
+
+        function xmlFuntzioa2() {
+            
+            
+
+            var selekt2 = '<div class="form-group"><label for="sel2" style="color:white;">Peliculas:</label><select class="form-control" id="sel2" onchange="inicializar3()"><option value="" selected>Elige una Película</option>';
+            var zuzendariSelekt = document.getElementById("sel1");
+            var balorea = document.getElementById("sel1").options[document.getElementById("sel1").selectedIndex].value;
+            for (var i = 0; i <x.Peliculas.Pelicula.length; i++) {
+            
+                var konparatzeko = x.Peliculas.Pelicula[i].Director;
+                if (konparatzeko == balorea){
+                    selekt2 += '<option value="'+ x.Peliculas.Pelicula[i].Titulo +'" data-toggle="modal" data-target="#myModal">'+ x.Peliculas.Pelicula[i].Titulo +'</option>'; 
+
+                }
+
+            }
+    
+            
+
+            selekt2 += '</select></div>';
+            document.getElementById("select2").innerHTML = selekt2;
+            // if (){
+              
+            // }
+        }
+        function xmlFuntzioa3() {
+            var balorea = document.getElementById("sel2").options[document.getElementById("sel2").selectedIndex].value;
+            var botoia = "";
+            if (balorea != "")
+            {
+                var modalHeader = "";
+                var modalBody = "";
+                
+                for (var i = 0; i <x.Peliculas.Pelicula.length; i++) {
+                
+                    var konparatzeko = x.Peliculas.Pelicula[i].Titulo;
+                    if (konparatzeko == balorea){
+                        modalHeader += '<h2>'+ x.Peliculas.Pelicula[i].Titulo +'    /   ' + x.Peliculas.Pelicula[i].Director +'</h2>';
+                        modalBody += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6"><img class="img-responsive" src="img/'+ x.Peliculas.Pelicula[i].Imagen +'.jpg" alt=""/></div><div class="col-lg-8 col-md-8 col-sm-8 col-xs-6">  <p>' + x.Peliculas.Pelicula[i].Sinopsis + '</p></div>' 
+                    }
+                
+                }
+                botoia += '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" >Buscar</button>';
+                
+                document.getElementById("modal-title").innerHTML = modalHeader;
+                document.getElementById("modal-body").innerHTML = modalBody;
+                // if (){
+                document.getElementById('botoiantzat').innerHTML = botoia;  
+                // }
+            }else{
+              document.getElementById('botoiantzat').innerHTML = "";
+            }
+        }
+
+//  <div class="form-group">
+//   <label for="sel1">Select list:</label>
+//   <select class="form-control" id="sel1">
+//     <option>1</option>
+//     <option>2</option>
+//     <option>3</option>
+//     <option>4</option>
+//   </select>
+// </div>
+        
+    </script>
+
+
+  </head>
+  <body>
+
+    <button class="btn btn-default centrado" onclick="inicializar('1.json')" type="button" value="Peliculas" >PELÍCULAS</button>
+        <div style="margin-top: 100px;" id = "select1" class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+            
+        </div>
+        <div id = "select2" class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+           
+        </div>
+        <div id="botoiantzat" class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3"></div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" id = "modal-title"></h4>
+      </div>
+      <div class="modal-body" id="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  </body>
+</html>
