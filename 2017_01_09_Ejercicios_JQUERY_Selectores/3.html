@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+
+	<title>EJERCICIOS jQuery2</title>
+	<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+
+	<style>
+	#blog p.excerpt { display: none; }
+	.embarcado {color: green;}
+	.noEmbarcado {color: red;}
+	.pendiente {color: orange;}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>-->
+	<script type="text/javascript">
+	$(function(){
+	    
+        // •	Añadir al elemento "h1" que tiene el nombre del vuelo, el nombre de vuelo asignado que sera “815 Oceanic”.
+        
+        $('h1 > i').eq(0).html(' 815 Oceanic');
+        
+        // •	Guarda en tres variables los parámetros principales del vuelo (la hora de salida,
+        // la puerta de salida y el destino), si no tiene asignada todavía nada, almacena el valor "Sin asignar".
+        
+        var irtenOrdua, irtenAtea, helmuga;
+        
+        irtenOrdua = $('#time > td').html();
+        if (irtenOrdua === "")
+        {
+            irtenOrdua = " Sin asignar"
+        }
+        console.log(irtenOrdua);
+        
+        irtenAtea = $('#gate > td').html();
+        if (irtenAtea === "")
+        {
+            irtenAtea = " Sin asignar"
+        }
+        console.log(irtenAtea);
+        
+        helmuga = $('#arrives > td').html();
+        if (helmuga === "")
+        {
+            helmuga = " Sin asignar"
+        }
+        console.log(helmuga);
+        
+        
+        // •	Añade entre paréntesis la hora de actualización de los paneles 
+        // "Logística" y "Pasajeros". Después de cada actualización (ejercicio) se deberán actualizar las horas.
+        
+        $('h2').each(function( index ) {
+          $( this ).append(" " + new Date($.now()))
+        });
+        // •	Tendremos tres clases diferentes para los pasajeros que hayan 
+        // embarcado, esten pendientes y no hallan embarcado (elegir colores y características que queráis).
+        // .embarcado , .pendiente , noEmbarcado
+        
+        // •	Añadir a los pasajeros cuyo nombre no empiece por "J" la clase de embarcados.
+        // Todos los demás estarán pendientes todavía.
+        var izena;
+        $('ul > li').each(function( index ) {
+          izena = $(this).html();
+          if (izena.substring(0,1) == "J")
+          {
+              $(this).addClass( "embarcado" );
+          }else{
+              $(this).addClass( "pendiente" );
+          }
+        });
+        
+        // •	Añadir características al vuelo (puerta, hora y destino).
+        
+        $('#time > td').html("13:11");
+        
+        $('#gate > td').html("4.Atea");
+        
+        $('#arrives > td').html("Bihar 02:01");
+        
+        // •	Marcar como embarcados a todos los pasajeros que quedan sin hacerlo excepto "Charlie Pace".
+
+	    $('.pendiente').each(function( index ) {
+	        if ($(this).html() != "Charlie Pace")
+	        {
+            $(this).removeClass('pendiente').addClass('embarcado');
+	        }
+        });
+				});
+	</script>
+</head>
+
+<body>
+<h1>Vuelo<i> sin especificar </i></h1>
+<h2>Logistica</h2>
+<table id="logistics">
+ <tbody>
+ <tr id="time">
+  <th>Hora:</th>
+  <td></td>
+ </tr>
+ <tr id="gate">
+  <th>Puerta:</th>
+  <td></td>
+ </tr>
+ <tr id="arrives">
+  <th>Destino:</th>
+  <td></td>
+ </tr>
+ </tbody>
+</table>
+<h2>Pasajeros</h2>
+<ul>
+ <li>Jack Shephard</li>
+ <li>Kate Austin</li>
+ <li>James “Sawyer” Ford</li>
+ <li>John Locke</li>
+ <li>Hugo “Hurley” Reyes</li>
+ <li>Benjamin Linus</li>
+ <li>Charlie Pace</li>
+ <li>Juliet Burke</li>
+</ul>
+</body>
+</html>
