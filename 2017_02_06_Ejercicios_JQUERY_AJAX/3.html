@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        // 3.	Crea una página que nada mas cargarse aparecerá un select, con dos opciones “irakasleak” o “ikasleak”.
+        // Cuando elijamos uno de los dos aparecerán otro select con la lista de alumnos o profesores y
+        // cuando selecciones el nombre aparecerán las asignaturas que imparten o que reciben.
+        // La información en el servidor será la siguiente:
+$(document).ready(function(){
+    var jsonDatuak;
+    var irik;
+    $('#irik').on('change',function(){
+        irik = $(this).val();
+        if(irik){
+            $.ajax({
+                type:'POST',
+                url:'./3.php',
+                dataType: 'json',
+                
+                success:function(resp){
+                    $("#sel2").empty();
+                    jsonDatuak = resp;
+                    if (irik == "Irakasleak"){
+                        for(var k in jsonDatuak.Irakasleak) {
+                          console.log(k, jsonDatuak.Irakasleak[k]);
+                          $("#sel2").append('<option value=' + jsonDatuak.Irakasleak[k].izena + '>' + jsonDatuak.Irakasleak[k].izena + '</option>');
+                        }
+                    }else{
+                        for(var k in jsonDatuak.Ikasleak) {
+                          console.log(k, jsonDatuak.Ikasleak[k]);
+                          $("#sel2").append('<option value=' + jsonDatuak.Ikasleak[k].izena + '>' + jsonDatuak.Ikasleak[k].izena + '</option>');
+                        }
+                    }
+                    
+                    
+                }
+            }); 
+        }
+    });
+    $('#sel2').on('change',function(){
+        var ikasgai = $(this).val();
+        if(ikasgai){
+            console.log(ikasgai);
+                    if (irik == "Irakasleak"){
+                        for(var k in jsonDatuak.Irakasleak) {
+                            if (jsonDatuak.Irakasleak[k].izena == ikasgai){
+                                $('#mezua').html("" + jsonDatuak.Irakasleak[k].izena + "-(re/e)k Ematen duen irakasgaia: " + jsonDatuak.Irakasleak[k].ikasgaia )
+                            }
+                       }
+                    }else{
+                        for(var k in jsonDatuak.Ikasleak) {
+                          if (jsonDatuak.Ikasleak[k].izena == ikasgai){
+                              $('#mezua').html("" + jsonDatuak.Ikasleak[k].izena + "-(re/e)k Jasotzen duen/dituen irakasgaia: ");
+                              for(var j in jsonDatuak.Ikasleak[k].ikasgaiak) {
+                                  $('#mezua').append("<li> " + jsonDatuak.Ikasleak[k].ikasgaiak[j] + "</li>" );
+                              }
+                                
+                            }                        
+                            
+                        }
+                    }
+        }
+    });
+});        
+
+    </script>
+    <style type="text/css">
+
+    </style>
+  </head>
+  <body>
+<div class="form-group">
+  <label for="sel1">Zer zara?:</label>
+  <select id="irik" class="form-control" id="sel1">
+    <option>zer zara?</option>
+    <option value="Irakasleak">Irakaslea</option>
+    <option value="Ikasleak">Ikaslea</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="sel2">Zein zara?:</label>
+  <select class="form-control" id="sel2">
+
+  </select>
+  <div id="mezua" class="success"></div>
+</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  </body>
+</html>

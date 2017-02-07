@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Ejercicios JQuery</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script languajes="javascript">
+//Ejercicio 5 del word Ejercicios Eventos
+$(document).ready(function(){
+	var cantVocales = 0;
+	$("textarea").keydown(function(event) {
+		//alert(event.which);
+		if(event.which == 65 || event.keyCode == 69 || event.keyCode == 73 || event.keyCode == 79 || event.keyCode == 85){
+			cantVocales++;
+		}
+		if(cantVocales %  2 == 0){
+			$("body").removeClass("blue");
+			$("body").addClass("orange");
+		}else{
+			$("body").removeClass("orange");
+			$("body").addClass("blue");
+
+		}
+})
+});
+</script>
+<style type="text/css">
+	.orange{
+		background-color:orange;
+	}
+
+	.blue{
+		background-color:blue;
+	}
+</style>
+</head>
+	<body>
+	<h2>Escriba aquí</h2>
+	<textarea>
+		
+	</textarea>
+	</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="eu">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>JQUERY Eventos 5</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        // 5.	Crea una página en la que mostraremos un menú del día, con sus primeros,
+        // segundos y postres. Como es un menú del día solo podremos elegir un plato de cada sección,
+        // con lo que los elegiremos mediante unos radio buttons. Cuando marquemos un plato el texto 
+        // del mismo deberá ponerse en cursiva. Por ultimo habrá un checkbox que marcaremos si queremos tomar café.
+        // Al pulsar el botón "Pedir" 
+        $(function(){
+          var zureMenua = [];
+        $( "form" ).on( "submit", function( event ) {
+          event.preventDefault();
+          zureMenua.push($( this ).serializeArray() );
+          
+          var arr_unchecked_values = $('input[type=checkbox]:checked').map(function(){return this.value}).get();
+          zureMenua.push(arr_unchecked_values);
+          if (zureMenua[1][0]!='Bai'){
+            zureMenua[1][0]= 'Ez';
+          }
+          console.log(zureMenua);
+          
+          $('#results').html("<ol><li>" + zureMenua[0][0].value + "</li> <li>" + zureMenua[0][1].value + "</li> <li>" + zureMenua[0][2].value + "</li> <li> Kafea: " + zureMenua[1][0] + "</li></ol>");
+          zureMenua = [];
+        });
+        
+        
+        
+        });  
+        
+    </script>  
+  </head>
+<body>
+    <form>
+<div class="form-group">
+  <label for="first">Primer Plato:</label>
+    <div class="radio">
+    <label><input type="radio" name="first" value="salda">Salda</label>
+    </div>
+    <div class="radio">
+    <label><input type="radio" name="first" value="arroza">Arroza</label>
+    </div>
+    <div class="radio">
+    <label><input type="radio" name="first" value="dilistak">Dilistak</label>
+    </div>
+</div>
+<div class="form-group">
+  <label for="second">Segundo Plato:</label>
+    <div class="radio">
+    <label><input type="radio" name="second" value="txuleta">Txuleta</label>
+    </div>
+    <div class="radio">
+    <label><input type="radio" name="second" value="lubina">Lubina</label>
+    </div>
+    <div class="radio">
+    <label><input type="radio" name="second" value="seitan">Seitán</label>
+    </div>
+</div>
+<div class="form-group">
+  <label for="first">Postres:</label>
+    <div class="radio">
+    <label><input type="radio" name="dessert" value="arrozesne">Arroz Esnea</label>
+    </div>
+    <div class="radio">
+    <label><input type="radio" name="dessert" value="gaztatarta">Gazta Tarta</label>
+    </div>
+    <div class="radio">
+    <label><input type="radio" name="dessert" value="coulant">Txokolatezko Coulanta</label>
+    </div>
+</div>
+<div class="form-group">
+  <label for="first">Kafea nahi izanez gero sakatu laukia:</label>
+  <label class="checkbox-inline"><input type="checkbox" value="Bai">Kafea Hartu</label>
+</div>
+<button type="submit" class="btn btn-default">Eskatu</button>
+</form>
+<p><tt id="results"></tt></p>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

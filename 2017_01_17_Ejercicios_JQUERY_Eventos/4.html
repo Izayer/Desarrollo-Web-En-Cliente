@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="eu">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>JQUERY Eventos 4</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <style type="text/css">
+        #laukiUrdin {background-color: blue; height: 200px;}
+        #laukiGorri {background-color: red; height: 200px;}
+        #laukiBerde {background-color: green; height: 200px;}
+        #laukiHori {background-color: yellow; height: 200px;}
+        
+    </style>
+    <script type="text/javascript">
+    // 4.	Crea una página con 4 cuadrados (div) que estén pegado entre
+    // si haciendo un cuadrado mas grande. Cuando pasemos el ratón por
+    // encima de ellos, escribirá en la pagina en que cuadrado se encuentra el ratón actualmente y desde cual ha entrado.
+    $(function(){
+        $('div').mouseover(function(e) {
+        //   alert(this.id);
+           $('#Non').text(this.id + "-ean Dago");
+         
+            e.stopPropagation();
+        });
+        $( "div" ).mouseout(function(e) {
+          $( "#Nondik" ).text( this.id + "-tik Dator" );
+          e.stopPropagation();
+        });
+    });
+    </script>  
+  </head>
+<body>
+    <div class="row">
+        <div id="laukiGorri" class="col-xs-6 col-md-6"></div>
+        <div id="laukiBerde" class="col-xs-6 col-md-6"></div>
+        <div id="laukiUrdin" class="col-xs-6 col-md-6"></div>
+        <div id="laukiHori" class="col-xs-6 col-md-6"></div>
+        
+    </div>
+    <div>
+        <p id="Non"></p>
+        <p id="Nondik"></p>
+    </div>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
